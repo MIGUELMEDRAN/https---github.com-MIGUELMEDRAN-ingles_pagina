@@ -30,3 +30,54 @@ header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(6px); back
 .post p { line-height: 1.65; }
 .post img { width: 100%; border-radius: 12px; margin: 0.5rem 0 1rem; }
 footer { text-align: center; color: var(--muted); padding: 2rem 0 3rem; }
+
+/* Responsive improvements */
+/* Make images preserve aspect ratio and cover the card area */
+.post img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ensure nav links wrap and are usable on small screens */
+.nav .links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Slightly smaller brand on small viewports */
+.brand small { font-size: 0.82rem; }
+
+/* Tweak container padding for narrow screens */
+@media (max-width: 640px) {
+  .container { padding: 0 0.75rem; }
+  .nav { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.65rem 0; }
+  .nav .links { width: 100%; }
+  .nav a { margin-left: 0; }
+  .hero { padding: 2rem 0 1rem; }
+  .hero p { max-width: 100%; }
+  .toc { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .post { padding: 1rem; }
+  .post h2 { font-size: 1.15rem; }
+  footer { padding: 1.5rem 0 2rem; }
+}
+
+@media (min-width: 641px) and (max-width: 960px) {
+  .container { padding: 0 1rem; }
+  .hero { padding: 2.5rem 0 1.25rem; }
+  .post { padding: 1.1rem; }
+}
+
+/* Accessibility: increase hit target for links on small screens */
+@media (max-width: 480px) {
+  .nav a { padding: 0.4rem 0.25rem; }
+  .toc a { padding: 0.75rem 0.9rem; }
+}
+
+/* Minor visual polish on very large screens */
+@media (min-width: 1200px) {
+  .container { max-width: 1100px; }
+}
